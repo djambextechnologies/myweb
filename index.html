@@ -53,11 +53,10 @@ nav.mobile a{font-size:1.1rem;color:#222;}
   text-align:center;
   position:relative;
   overflow:hidden;
-  background-image: url('e1.jpg'); /* Add your image path here */
-  background-size: cover;       /* Makes it cover the whole section */
-  background-position: center;  /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
-
+  background-image: url('e1.jpg'); 
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
 }
 #particles-js{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
 #hero-content{position:relative;z-index:1;}
@@ -112,7 +111,7 @@ section h2{text-align:center;font-size:2rem;color:#e91e63;margin-bottom:2rem;}
 /* ===== CONTACT SECTION ===== */
 #contact{
   max-width:500px;
-  margin:3rem auto 6rem auto; /* spacing from booking and footer */
+  margin:3rem auto 6rem auto; 
   background:#fff0f5;
   padding:2rem;
   border-radius:20px;
@@ -139,12 +138,13 @@ footer{background:#222;color:#fff;text-align:center;padding:1.5rem;font-size:0.9
 @media(max-width:768px){.hamburger{display:block;}nav.desktop{display:none;}}
 </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <img src="e1.jpg" alt="XYZ Logo">
+    <img src="e1.jpg" alt="X Nail Salon Logo">
     <h1>X Nail Salon</h1>
   </div>
   <nav class="desktop">
@@ -242,13 +242,13 @@ footer{background:#222;color:#fff;text-align:center;padding:1.5rem;font-size:0.9
   <div class="info">
     <p>📞 +233538754740</p>
     <p>📍 Accra, Ghana</p>
-    <p>✉ info@michynails.com</p>
+    <p>✉ info@xnailsalon.com</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 XYZ Nail Salon. All rights reserved</p>
+  <p>© 2026 X Nail Salon. All rights reserved</p>
 </footer>
 
 <!-- FLOATING BOOKING BUTTON -->
@@ -259,23 +259,31 @@ footer{background:#222;color:#fff;text-align:center;padding:1.5rem;font-size:0.9
 const hamburger=document.getElementById("hamburger");
 const mobileMenu=document.getElementById("mobileMenu");
 function toggleMobileMenu(){ mobileMenu.classList.toggle("show"); }
-hamburger.onclick=e=>{ e.stopPropagation(); toggleMobileMenu(); };
-document.addEventListener("click",e=>{ if(!e.target.closest("#mobileMenu")&&!e.target.closest("#hamburger")) mobileMenu.classList.remove("show"); });
+hamburger.onclick = function(e){ e.stopPropagation(); toggleMobileMenu(); };
+document.addEventListener("click", function(e){ if(!e.target.closest("#mobileMenu")&&!e.target.closest("#hamburger")) mobileMenu.classList.remove("show"); });
 
 // WhatsApp booking
-const WHATSAPP_NUMBER="+2338754740";
+const WHATSAPP_NUMBER = "233538754740";
 function bookWhatsApp(){
-  const name=document.getElementById("clientName").value.trim();
-  const email=document.getElementById("clientEmail").value.trim();
-  const phone=document.getElementById("clientPhone").value.trim();
-  const date=document.getElementById("clientDate").value;
-  const time=document.getElementById("clientTime").value;
-  const service=document.getElementById("clientService").value;
-  const notes=document.getElementById("clientNotes").value.trim();
-  if(!name||!phone||!date||!time){ alert("Please fill all required fields"); return; }
-  let msg=📌 *XYZ Nail Salon Appointment*\n👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n📅 Date: ${date}\n⏰ Time: ${time}\n💅 Service: ${service}\n;
-  if(notes) msg+=📝 Notes: ${notes}\n;
-  window.open(https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)});
+  const name = document.getElementById("clientName").value.trim();
+  const email = document.getElementById("clientEmail").value.trim();
+  const phone = document.getElementById("clientPhone").value.trim();
+  const date = document.getElementById("clientDate").value;
+  const time = document.getElementById("clientTime").value;
+  const service = document.getElementById("clientService").value;
+  const notes = document.getElementById("clientNotes").value.trim();
+
+  if(!name || !phone || !date || !time){ alert("Please fill all required fields"); return; }
+
+  let msg = `📌 X Nail Salon Appointment
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone}
+📅 Date: ${date}
+⏰ Time: ${time}
+💅 Service: ${service}`;
+  if(notes) msg += `\n📝 Notes: ${notes}`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
 // Particles background
