@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X Nail Salon | Luxury Nails</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Particles JS -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#fff0f5;color:#222;scroll-behavior:smooth;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;width:100%;height:60px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 1.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
+  box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000;
+}
+header .logo{display:flex;align-items:center;gap:0.5rem;}
+header .logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+header .logo h1{font-size:1.1rem;font-weight:700;color:#e91e63;}
+nav.desktop{display:flex;gap:1.5rem;}
+nav.desktop a{font-weight:500;font-size:0.9rem;color:#222;transition:.3s;}
+nav.desktop a:hover{color:#e91e63;}
+.hamburger{display:none;font-size:1.5rem;cursor:pointer;color:#222;}
+
+/* ===== MOBILE MENU ===== */
+nav.mobile{
+  position:fixed;top:0;left:-240px;width:240px;height:100%;
+  background:#fff;padding-top:5rem;padding-left:1.5rem;
+  display:flex;flex-direction:column;gap:1.8rem;
+  transition:.3s;z-index:1500;box-shadow:2px 0 15px rgba(0,0,0,.1);
+}
+nav.mobile.show{left:0;}
+nav.mobile a{font-size:1.1rem;color:#222;}
+
+/* ===== HERO ===== */
+#hero{
+  height:80vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background-image: url('e1.jpg'); /* Add your image path here */
+  background-size: cover;       /* Makes it cover the whole section */
+  background-position: center;  /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+
+}
+#particles-js{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+#hero-content{position:relative;z-index:1;}
+#hero img.profile{
+  width:120px;height:120px;border-radius:50%;border:4px solid #fff;object-fit:cover;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+#hero h2{margin-top:1rem;font-size:2rem;color:#e91e63;}
+#hero p{margin-top:0.5rem;font-size:1rem;color:#555;}
+#hero button{margin-top:1rem;padding:0.6rem 2rem;border:none;border-radius:25px;background:#e91e63;color:#fff;font-weight:600;cursor:pointer;transition:.3s;}
+#hero button:hover{background:#c2185b;}
+
+/* ===== SECTIONS ===== */
+section{padding:4rem 1.5rem;max-width:1000px;margin:auto;position:relative;z-index:1;}
+section h2{text-align:center;font-size:2rem;color:#e91e63;margin-bottom:2rem;}
+
+/* ===== PORTFOLIO ===== */
+.portfolio-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+}
+@media(max-width:1024px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.portfolio-grid{grid-template-columns:1fr;}}
+.portfolio-item{
+  overflow:hidden;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition:transform .3s, box-shadow .3s;
+}
+.portfolio-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+.portfolio-item:hover img{transform:scale(1.05);}
+.portfolio-item:hover{box-shadow:0 12px 30px rgba(0,0,0,.2);}
+
+/* ===== SERVICES ===== */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr;}}
+.service-card{
+  background:#fff;padding:1.5rem;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.1);
+  transition:.3s;text-align:center;
+}
+.service-card h4{margin-bottom:0.5rem;font-size:1.1rem;color:#e91e63;}
+.service-card p{color:#555;font-size:0.95rem;}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.15);}
+
+/* ===== BOOKING FORM ===== */
+#booking{max-width:450px;margin:2rem auto 4rem auto;background:rgba(255,255,255,0.95);padding:2rem;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.1);}
+#booking label{display:block;margin:0.3rem 0;font-weight:500;color:#e91e63;font-size:0.95rem;}
+#booking input,#booking select,#booking textarea{width:100%;padding:0.6rem;margin:0.3rem 0;border-radius:8px;border:1px solid #ccc;font-size:0.9rem;}
+#booking input:focus,#booking select:focus,#booking textarea:focus{border-color:#e91e63;box-shadow:0 0 6px rgba(233,30,99,.3);}
+#booking button{margin-top:1rem;width:100%;padding:0.8rem;border:none;border-radius:25px;background:#e91e63;color:#fff;font-weight:600;cursor:pointer;transition:.3s;}
+#booking button:hover{background:#c2185b;}
+
+/* ===== CONTACT SECTION ===== */
+#contact{
+  max-width:500px;
+  margin:3rem auto 6rem auto; /* spacing from booking and footer */
+  background:#fff0f5;
+  padding:2rem;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.5rem;
+  text-align:center;
+}
+#contact .socials{display:flex;gap:1rem;font-size:1.3rem;}
+#contact .socials a{color:#e91e63;transition:.3s;}
+#contact .socials a:hover{color:#c2185b;}
+#contact .info p{margin:0.3rem 0;color:#222;font-weight:500;font-size:0.95rem;}
+
+/* ===== FLOATING BOOKING BUTTON ===== */
+#floatBook{position:fixed;bottom:20px;right:20px;background:#e91e63;color:#fff;padding:0.8rem 1.5rem;border-radius:50px;font-weight:600;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.2);z-index:1000;transition:.3s;}
+#floatBook:hover{background:#c2185b;}
+
+/* ===== FOOTER ===== */
+footer{background:#222;color:#fff;text-align:center;padding:1.5rem;font-size:0.9rem;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){.hamburger{display:block;}nav.desktop{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="e1.jpg" alt="XYZ Logo">
+    <h1>X Nail Salon</h1>
+  </div>
+  <nav class="desktop">
+    <a href="#hero">Home</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#booking">Book</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav class="mobile" id="mobileMenu">
+  <a href="#hero" onclick="toggleMobileMenu()">Home</a>
+  <a href="#portfolio" onclick="toggleMobileMenu()">Portfolio</a>
+  <a href="#services" onclick="toggleMobileMenu()">Services</a>
+  <a href="#booking" onclick="toggleMobileMenu()">Book</a>
+  <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="particles-js"></div>
+  <div id="hero-content">
+    <img src="e2.jpg" alt="Technician" class="profile">
+    <h2>Luxury Nail Care & Designs</h2>
+    <p>Professional manicures, pedicures & nail art</p>
+    <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <h2>Before & After Gallery</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item"><img src="e1.jpg" alt="Nail 1"></div>
+    <div class="portfolio-item"><img src="e2.jpg" alt="Nail 2"></div>
+    <div class="portfolio-item"><img src="e3.jpg" alt="Nail 3"></div>
+    <div class="portfolio-item"><img src="e3.jpg" alt="Nail 4"></div>
+    <div class="portfolio-item"><img src="e2.jpg" alt="Nail 5"></div>
+    <div class="portfolio-item"><img src="e1.jpg" alt="Nail 6"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card"><h4>Manicure</h4><p>Classic manicure with high-quality polish. ₵50</p></div>
+    <div class="service-card"><h4>Pedicure</h4><p>Relaxing pedicure experience. ₵60</p></div>
+    <div class="service-card"><h4>Nail Art</h4><p>Custom nail designs. ₵80</p></div>
+    <div class="service-card"><h4>Gel Nails</h4><p>Long-lasting gel manicure. ₵90</p></div>
+    <div class="service-card"><h4>French Tips</h4><p>Elegant French tips. ₵70</p></div>
+    <div class="service-card"><h4>Waxing</h4><p>Professional waxing. ₵50</p></div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+  <h2>Book Your Appointment</h2>
+  <div id="bookingForm">
+    <label>Full Name</label>
+    <input type="text" id="clientName" placeholder="Enter your full name">
+    <label>Email Address</label>
+    <input type="email" id="clientEmail" placeholder="Enter your email">
+    <label>Phone Number</label>
+    <input type="tel" id="clientPhone" placeholder="Enter your phone">
+    <label>Date</label>
+    <input type="date" id="clientDate">
+    <label>Time</label>
+    <input type="time" id="clientTime">
+    <label>Service</label>
+    <select id="clientService">
+      <option value="Manicure">Manicure</option>
+      <option value="Pedicure">Pedicure</option>
+      <option value="Nail Art">Nail Art</option>
+      <option value="Gel Nails">Gel Nails</option>
+      <option value="French Tips">French Tips</option>
+      <option value="Waxing">Waxing</option>
+    </select>
+    <label>Notes</label>
+    <textarea id="clientNotes" placeholder="Any additional notes..."></textarea>
+    <button onclick="bookWhatsApp()">Submit</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="socials">
+    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-snapchat"></i></a>
+  </div>
+  <div class="info">
+    <p>📞 +233538754740</p>
+    <p>📍 Accra, Ghana</p>
+    <p>✉ info@michynails.com</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 XYZ Nail Salon. All rights reserved</p>
+</footer>
+
+<!-- FLOATING BOOKING BUTTON -->
+<div id="floatBook" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</div>
+
+<script>
+// Mobile menu toggle
+const hamburger=document.getElementById("hamburger");
+const mobileMenu=document.getElementById("mobileMenu");
+function toggleMobileMenu(){ mobileMenu.classList.toggle("show"); }
+hamburger.onclick=e=>{ e.stopPropagation(); toggleMobileMenu(); };
+document.addEventListener("click",e=>{ if(!e.target.closest("#mobileMenu")&&!e.target.closest("#hamburger")) mobileMenu.classList.remove("show"); });
+
+// WhatsApp booking
+const WHATSAPP_NUMBER="+2338754740";
+function bookWhatsApp(){
+  const name=document.getElementById("clientName").value.trim();
+  const email=document.getElementById("clientEmail").value.trim();
+  const phone=document.getElementById("clientPhone").value.trim();
+  const date=document.getElementById("clientDate").value;
+  const time=document.getElementById("clientTime").value;
+  const service=document.getElementById("clientService").value;
+  const notes=document.getElementById("clientNotes").value.trim();
+  if(!name||!phone||!date||!time){ alert("Please fill all required fields"); return; }
+  let msg=📌 *XYZ Nail Salon Appointment*\n👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n📅 Date: ${date}\n⏰ Time: ${time}\n💅 Service: ${service}\n;
+  if(notes) msg+=📝 Notes: ${notes}\n;
+  window.open(https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)});
+}
+
+// Particles background
+tsParticles.load("particles-js", {
+  fpsLimit: 60,
+  particles: {
+    number: {value: 60, density: {enable: true, area: 800}},
+    color: {value: ["#e91e63","#ffb6c1","#ffc0cb"]},
+    shape: {type: "circle"},
+    opacity: {value: 0.5, random: true},
+    size: {value: 3, random: true},
+    move: {enable: true, speed: 1.5, direction: "none", random: true, straight: false, outMode: "out"},
+  },
+  interactivity: {
+    detectsOn: "canvas",
+    events: {onHover:{enable:true,mode:"grab"}, onClick:{enable:true,mode:"push"}, resize:true},
+    modes: {grab:{distance:150, line_linked:{opacity:0.2}}, push:{particles_nb:4}}
+  },
+  retina_detect: true,
+});
+</script>
+
+</body>
+</html>
